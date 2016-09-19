@@ -1,11 +1,11 @@
-# pyBioPlot
+# pyBioUtil
 ---
 
-## What is inside pyBioPlot
+## What is inside pyBioUtil
 
-pyBioPlot is an High level library for **Python 3** containing functions to generate specific plot for NGS and other biology related datasets (example: Volcano plot, MA Plot ...).
+pyBioUtil is an High level library for **Python 3** containing functions for data analysis of NGS and other biology related datasets.
 
-Test and documentation are available in the following [jupyter notebook](https://nbviewer.jupyter.org/github/a-slide/pyBioPlot/blob/master/test_pyBioPlot.ipynb)
+Test and documentation are available in the following [jupyter notebook](https://nbviewer.jupyter.org/github/a-slide/pyBioUtil/blob/master/test_pyBioUtil.ipynb)
 
 
 ## Authors and Contact
