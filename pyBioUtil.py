@@ -91,7 +91,7 @@ def gencode_fasta_clean (gencode_fasta, clean_fasta="gencode_clean.fa.gz"):
 
 #~~~~~~~ Fastq tools ~~~~~~~#
 
-def fastqc_summary(fastqc_res_dir, table_if=["pass", "warn", "fail"] , plot_if=["pass", "warn", "fail"], max_table_row=10):
+def fastqc_summary(fastqc_res_dir, table_if=["pass", "warn", "fail"] , plot_if=["pass", "warn", "fail"], max_table_row=10, plot_width=500):
     """
     Summarize and display fastqc results in IPYTHON/JUPYTER. Don't try to use in another interface or in terminal
     Requires PANDAS third party python package to work. Works directly from the zipped results obtained by FastQC v0.11.5+
@@ -158,9 +158,9 @@ def fastqc_summary(fastqc_res_dir, table_if=["pass", "warn", "fail"] , plot_if=[
                             found_module=True
                         
                         # Detect the header of a plot section
-                        if module_status in plot_if and module_name in plot_modules:                
+                        if module_status in plot_if and module_name in plot_modules:
                             image = "{}Images/{}".format(base_dir, plot_modules[module_name])
-                            display(Image(image, width=500))
+                            display(Image(image, width=plot_width))
                     
                     # Fill a dataframe if a table section was found
                     elif found_module:
