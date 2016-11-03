@@ -100,7 +100,7 @@ def fastqc_summary(fastqc_res_dir, table_if=["pass", "warn", "fail"] , plot_if=[
     @param plot_if Output the plot for each individual section if in the following list ["pass", "warn", "fail"] [DEFAULT ALL]
     @param max_table_row  Maximal number of row for the tables [DEFAULT 10]
     """
-    from IPython.core.display import Image, display, Markdown, HTML
+    from IPython.core.display import Image, display, HTML
     import pandas as pd
     import zipfile
     import tempfile
@@ -121,7 +121,8 @@ def fastqc_summary(fastqc_res_dir, table_if=["pass", "warn", "fail"] , plot_if=[
         'Adapter Content':'adapter_content.png'}
 
     for fp in glob(fastqc_res_dir+"/*_fastqc.zip"):
-        display(Markdown("---\n## {}".format(fp.rpartition("/")[2])))
+        display(HTML("<hr></hr>"))
+        display(HTML("<font size=\"4\"><b>{}</b></font>".format(fp.rpartition("/")[2])))
         
         # Extract the zip file in a temporary folder 
         with tempfile.TemporaryDirectory() as tmpdirname:
@@ -145,12 +146,12 @@ def fastqc_summary(fastqc_res_dir, table_if=["pass", "warn", "fail"] , plot_if=[
                             display(HTML('<font size=2>'+df_html+'</font>'))
                             found_module = found_header = False             
                     
-                    # Detect the start of a mmodule section
+                    # Detect the start of a module section
                     elif line.startswith(">>"):
                         ls = line[2:].split("\t")
                         module_name = ls[0]
                         module_status = ls[1]
-                        display(Markdown("**{} : {}**".format(ls[0], ls[1])))
+                        display(HTML("<font size=\"3\"><b>{} : {}</b></font>".format(ls[0], ls[1])))
                         
                         # Detect the start of a table section
                         if module_status in table_if and module_name in table_modules:
